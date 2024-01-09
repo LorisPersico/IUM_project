@@ -1,5 +1,5 @@
 var express = require('express');
-const {Game} = require("../databases/database");
+const {Game, Appearances} = require("../databases/database");
 var router = express.Router();
 
 /* GET home page. */
@@ -17,5 +17,14 @@ router.get('/api/games', async (req, res) => {
   }
 });
 
+router.get('/api/appearances', async (req, res) => {
+  try {
+    const appearances = await Appearances.find();
+    res.json(appearances);
+  } catch (error) {
+    console.error('Errore nel recupero delle appearances:', error);
+    res.status(500).json({ error: 'Errore nel recupero delle appearances' });
+  }
+});
 
 module.exports = router;

@@ -20,9 +20,12 @@ connection = mongoose.connect(mongoDB, {
 const gameSchema = new mongoose.Schema({
 });
 
+const appearancesSchema = new mongoose.Schema({
+});
 
 const Game = mongoose.model('Game', gameSchema);
+const Appearances = mongoose.model('Appearances', appearancesSchema);
 
 module.exports = { Game };
-
+module.exports = { Appearances };
 
